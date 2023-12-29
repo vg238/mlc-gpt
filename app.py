@@ -169,7 +169,7 @@ if __name__ == '__main__':
         ],
         cache_examples=True,
     )
-    demo.launch(share=False)
+    demo.launch(share=True)
 
     # while True:
     #     q = input("Enter query (or quit): ")
