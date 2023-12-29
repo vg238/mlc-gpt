@@ -169,8 +169,12 @@ if __name__ == '__main__':
         ],
         cache_examples=True,
     )
-    demo.launch(share=True)
-
+    if os.environ["PORT"]:
+        port = int(os.environ["PORT"])
+        demo.launch(share=False, server_name="0.0.0.0", server_port=port)
+    else:
+        demo.launch(share=False)
+    
     # while True:
     #     q = input("Enter query (or quit): ")
     #     if q.lower() == "quit":
