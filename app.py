@@ -146,6 +146,9 @@ if __name__ == '__main__':
 
     def handle_query(query):
         """Handle the query."""
+        if len(query) > 100:
+            response = "Sorry, your query is too long. Please try again with a shorter query."
+            return response
         try:
             response = query_engine.query(query)
         except Exception as e: # pylint: disable=broad-exception-caught
