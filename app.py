@@ -66,9 +66,10 @@ def get_sql_tool():
         query_engine=sql_query_engine,
         description=(
             "Useful for translating a natural language query into a SQL query over"
-            " a database named player_stats. The database contains 3 tables:"
-            " players, teams, and matches. Players table contains"
-            " information about each player, teams table contains information about each"
+            " a database named player_stats. The database contains 4 tables:"
+            " batting_players, bowling_players, teams, and matches. batting_players table contains"
+            " batting related information about each player, bowling_players table contains"
+            " bowling related information about each player, teams table contains information about each"
             " team, and matches table contains information about each match." 
         ),
     )
@@ -146,7 +147,7 @@ if __name__ == '__main__':
 
     def handle_query(query):
         """Handle the query."""
-        if len(query) > 100:
+        if len(query) > 200:
             response = "Sorry, your query is too long. Please try again with a shorter query."
             return response
         try:
@@ -164,15 +165,15 @@ if __name__ == '__main__':
         description="Ask questions about Major League Cricket (MLC)",
         examples=[
         ["How many teams are in MLC and what are they?"],
-        # ["What is the name of the player who has scored the most runs?"],
-        # ["What is the name of the player who has the best bowling average and what is that value?"],
-        # ["What is the name of the player who has the best batting strike rate and what is that value?"],
-        # ["Which Australian states are taking part in Major League Cricket and what are they doing?"],
-        # ["What is the owner of Major leagure cricket and how much does it cost to run the league?"]
+        ["What is the name of the player with the best batting strike rate and what is that value?"],
+        ["Which Australian states are taking part in Major League Cricket and what are they doing?"],
+        ["Who is the owner of Major league cricket and how much does it cost to run the league?"],
+        ["What are the names of teams that won matches played in Morrisville?"]
         ],
         cache_examples=True,
     )
-    if os.environ["PORT"]:
+
+    if "PORT" in os.environ:
         port = int(os.environ["PORT"])
         demo.launch(share=False, server_name="0.0.0.0", server_port=port)
     else:
