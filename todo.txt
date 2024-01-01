@@ -1,0 +1,5 @@
+- When a SQL error happens, rely on vector tool to answer the original question instead of asking it to fix the SQL.
+- Make the answers more concise and consistent.
+- Fine tune vector store settings like the chunck size, max_k, embedding model etc.
+- Introduce metadata in vector store documents and see if that improves accuracy.
+- Cache response for similar questions
